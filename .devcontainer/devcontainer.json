@@ -1,0 +1,43 @@
+{
+    "name": "OpenVPN and Yocto Project Development",
+    "build": {
+        "dockerfile": "../Dockerfile", // Assuming Dockerfile is in the same directory as .devcontainer
+        "context": ".." // Docker build context
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                // "aaron-bond.better-comments",
+                // "ms-python.python",
+                // "ms-vscode.cpptools",
+                // "eamodio.gitlens",
+                // "zixuanwang.linkerscript",
+                // "pkief.vscode-material-icon-theme",
+                // "mhutchie.git-graph",
+                // "streetsidesoftware.code-spell-checker",
+                // "CoenraadS.bracket-pair-colorizer-2",
+                // "jock.svg",
+                // "ms-vscode.cmake-tools",
+                // "marus25.cortex-debug",
+                // "twxs.cmake",
+                // "ms-azuretools.vscode-docker",
+                // "vsciot-vscode.vscode-device-tree",
+                // "gruntfuggly.todo-tree",
+                // "slevesque.shader",
+                "mhutchie.git-graph" // Visualize your Git repositories in graph format
+            ]
+        }
+    },
+    "forwardPorts": [
+        8080,
+        1194 // Ensure OpenVPN port is forwarded if necessary
+    ],
+    "postCreateCommand": "echo 'Environment ready for Yocto Project and OpenVPN Development!'",
+    "remoteUser": "devuser",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/devuser,type=bind",
+    "workspaceFolder": "/home/devuser"
+}
