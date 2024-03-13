@@ -4,8 +4,4 @@
 [credential]
 	helper = "!f() { /home/devuser/.vscode-server/bin/1e790d77f81672c49be070e04474901747115651/node /tmp/vscode-remote-containers-61b70eb3-f7c1-4d3f-8fbf-1293f8bda128.js git-credential-helper $*; }; f"
 
-# Ignore VS Code server files
-.vscode-server/
 
-# Ignore .NET Core cryptography directories
-.dotnet/
