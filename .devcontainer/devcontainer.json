@@ -1,43 +1,44 @@
 {
-    "name": "OpenVPN and Yocto Project Development",
+    // Name of your development environment
+    "name": "OpenVPN Project Development",
+
     "build": {
-        "dockerfile": "../Dockerfile", // Assuming Dockerfile is in the same directory as .devcontainer
-        "context": ".." // Docker build context
+        "dockerfile": "../Dockerfile", // Path to Dockerfile relative to the .devcontainer folder
+        "context": ".." // Docker build context, usually the project root
     },
+    
+    // Customizations for VSCode settings and recommended extensions
     "customizations": {
         "vscode": {
+            // VSCode settings to apply within the dev container
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "bash",
                 "terminal.integrated.shell.linux": "/bin/bash"
             },
+            
             "extensions": [
-                "aaron-bond.better-comments",
-                "ms-python.python",
-                "ms-vscode.cpptools",
-                "eamodio.gitlens",
-                "zixuanwang.linkerscript",
-                "pkief.vscode-material-icon-theme",
-                "mhutchie.git-graph",
-                "streetsidesoftware.code-spell-checker",
-                "CoenraadS.bracket-pair-colorizer-2",
-                "jock.svg",
-                "ms-vscode.cmake-tools",
-                "marus25.cortex-debug",
-                "twxs.cmake",
-                "ms-azuretools.vscode-docker",
-                "vsciot-vscode.vscode-device-tree",
-                "gruntfuggly.todo-tree",
-                "slevesque.shader",
-                "mhutchie.git-graph" // Visualize your Git repositories in graph format
+                "ms-python.python", // Python support, which might still be useful for scripting or automation tasks
+                "ms-vscode.cpptools", // C++ tools, essential if any C/C++ development is needed
+                "eamodio.gitlens", // Enhanced Git support to manage version control effectively
+                "pkief.vscode-material-icon-theme", // vscode-icons, enriches the Visual Studio Code interface
+                "mhutchie.git-graph", // Visualize your Git repositories in graph format for better version control insights
+                "streetsidesoftware.code-spell-checker", // Spell check your code to maintain professionalism in documentation and comments
+                "CoenraadS.bracket-pair-colorizer-2" // Colorize matching brackets to enhance code readability
             ]
         }
     },
+
     "forwardPorts": [
         8080,
-        1194 // Ensure OpenVPN port is forwarded if necessary
+        1194
     ],
-    "postCreateCommand": "echo 'Environment ready for Yocto Project and OpenVPN Development!'",
-    "remoteUser": "devuser",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/devuser,type=bind",
-    "workspaceFolder": "/home/devuser"
+    "postCreateCommand": "echo 'Environment ready for OpenVPN Project Development!'",
+    // "remoteUser": "devuser",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/usr/src/app,type=bind",
+    "workspaceFolder": "/usr/src/app",
+
+    "runArgs": [
+        "--cap-add=NET_ADMIN",
+        "--device=/dev/net/tun"
+    ]
 }
